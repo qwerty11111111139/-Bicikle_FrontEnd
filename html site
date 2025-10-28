@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кулінарний сайт</title>
+    <link rel="stylesheet" href="style.css">
+  <script src="scripts.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1> :)</h1>
+    </header>
+    
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-link">Home</a>
+        </div>
+    </nav>
+    
+    <div class="content-container">
+        <!-- Секція з категоріями -->
+        <div class="categories">
+            <!-- Категорія "Веганські страви" -->
+            <div class="category-block">
+                <div class="category" data-category="vegan">
+                     <img src="https://i.pinimg.com/736x/4c/4c/10/4c4c107c7d98edc0d036534f4c652de5.jpg" alt="Веганські страви"> 
+                    <h2 class="category-title">Веганські страви</h2>
+                </div>
+                
+                <div class="dishes">
+                    <div class="dish-card" data-id="1">
+                        <div class="dish-image">
+                            <img src="https://i.pinimg.com/736x/a1/4a/7f/a14a7f11a370b08939ab779f290c7e3d.jpg">
+                        </div>
+                        <div class="dish-info">
+                            <h3 class="dish-title">Будда-боул</h3>
+                            <p class="dish-description">Будда-боул — Збалансована страва з зернових, овочів і білка</p>
+                            <div class="dish-tags">
+                                <span class="dish-tag">Веганський</span>
+                                <span class="dish-tag recipe-tag" data-id="1">Рецепт</span>
+                            </div>
+                            <div class="recipe-content" id="recipe-1" style="display: none;">
+                <p> Варений кіноа або рис — 1/2 склянки</p>
+
+ <p>Нут варений або печений — 1/2 склянки</p>
+<p> Авокадо — 1/2 шт. </p>
+<p> Морква (терта або скибочками) — 1/3 шт. </p>
+<p> Огірок або редис — кілька скибочок</p>
+<p> Шпинат або салат — жменя</p>
+<p> Насіння (кунжут, гарбузове) — 1 ст. л.</p>
+<p> Оливкова олія, лимонний сік, сіль — для заправки</p>
+                            </div>
+                         
+                        </div>
+                      
+                    </div>
+                    
+                    <div class="dish-card" data-id="5">
+                        <div class="dish-image">
+                            <img src="https://i.pinimg.com/736x/23/a6/64/23a664cee9276907325065bd5a00aca1.jpg">
+                        </div>
+                        <div class="dish-info">
+                            <h3 class="dish-title">Поке боул з тофу</h3>
+                            <p class="dish-description">Поке боул з тофу — Свіжий боул з рисом, овочами та маринованим тофу</p>
+                            <div class="dish-tags">
+                                <span class="dish-tag">Веганський</span>
+                                <span class="dish-tag recipe-tag" data-id="5">Рецепт</span>
+                            </div>
+                            <div class="recipe-content" id="recipe-5" style="display: none;">
+                            <p> Варений рис (суші або жасминовий) — 1/2 склянки</p>
+
+<p>Тофу (смажений або маринований) — 1/2 склянки</p>
+
+<p>Авокадо — 1/2 шт.</p>
+
+<p>Огірок — кілька скибочок</p>
+
+<p>Морква — скибочки або соломка</p>
+
+<p>Едамаме (варені) — 1/4 склянки</p>
+
+<p>Червона капуста (шинкована) — 1/4 склянки</p>
+
+<p>Зелену цибулю — трохи</p>
+
+<p>Кунжут — для посипання</p>
+
+<p>Соєвий соус, рисовий оцет, кунжутна олія — для заправки</p>
+                            
+                            </div>
+                        
+                        </div>
+                    </div>
+                    
+                    <div class="dish-card" data-id="7">
+                        <div class="dish-image">
+                            <img src="https://i.pinimg.com/736x/97/5f/03/975f035ad880d2c64ff6fa893ea46eaf.jpg">
+                        </div>
+                        <div class="dish-info">
+                            <h3 class="dish-title">Шакшука</h3>
+                            <p class="dish-description">Шакшука — Ароматна страва з томатів, перцю і спецій</p>
+                            <div class="dish-tags">
+                                <span class="dish-tag">Веганський</span>
+                                <span class="dish-tag recipe-tag" data-id="7">Рецепт</span>
+                            </div>
+                            <div class="recipe-content" id="recipe-7" style="display: none;">
+                       <p>Яйця — 2–3 шт.</p>
+
+<p>Помідори (свіжі або у власному соку) — 2–3 шт. або 1/2 банки</p>
+
+<p>Болгарський перець — 1 шт.</p>
+
+<p>Цибуля — 1/2 шт.</p>
+
+<p>Часник — 1–2 зубчики</p>
+
+<p>Оливкова олія — 1–2 ст. л.</p>
+
+<p>Паприка, кумин, сіль, перець — за смаком</p>
+                            </div>
+                        
+                        </div>
+                    </div>
+                    
+                    <div class="dish-card" data-id="8">
+                        <div class="dish-image">
+                            <img src="https://i.pinimg.com/736x/83/32/87/833287b93945493273614de57f2ebe67.jpg">
+                        </div>
+                        <div class="dish-info">
+                            <h3 class="dish-title">Фалафель</h3>
+                            <p class="dish-description">Фалафель — Хрусткі кульки з нуту та зелені зі східними спеціями</p>
+                            <div class="dish-tags">
+                                <span class="dish-tag">Веганський</span>
+                                <span class="dish-tag recipe-tag" data-id="8">Рецепт</span>
+                            </div>
+                            <div class="recipe-content" id="recipe-8" style="display: none;">
+                          <p> Нут (сухий, замочений на ніч) — 1 склянка</p>
+
+<p>Цибуля — 1 шт.</p>
+
+<p>Часник — 2–3 зубчики</p>
+
+<p>Зелень (петрушка, кінза) — 1 пучок</p>
+
+<p>Борошно або панірувальні сухарі — 1–2 ст. л.</p>
+
+<p>Кмин, коріандр (мелений), сіль, перець — за смаком</p>
+
+<p>Розпушувач або сода — 1/2 ч. л.</p>
+
+<p>Олія — для смаження</p>
+                       
+                            </div>
+                      
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Категорія "Паста" -->
+            <div class="category-block">
+                <div class="category" data-category="pasta">
+                     <img src="https://i.pinimg.com/736x/4c/4c/10/4c4c107c7d98edc0d036534f4c652de5.jpg" alt="Паста"> 
+                    <h2 class="category-title">Паста</h2>
+                </div>
+                
+                <div class="dishes">
+                    <div class="dish-card" data-id="2">
+                        <div class="dish-image">
+                            <img src="https://i.pinimg.com/736x/5a/d0/dd/5ad0dd9e1b6883a85e8ba975091f6d83.jpg" alt="Страва 2">
+                        </div>
+                        <div class="dish-info">
+                            <h3 class="dish-title">Фарфалле</h3>
+                            <p class="dish-description">Фарфалле — Класична італійська паста у вигляді «метеликів», ідеальна для легких соусів</p>
+                            <div class="dish-tags">
+                                <span class="dish-tag">Паста</span>
+                                <span class="dish-tag recipe-tag" data-id="2">Рецепт</span>
+                            </div>
+                            <div class="recipe-content" id="recipe-2" style="display: none;">
+                       
+                              <p> Макарони фарфалле — 200 г</p>
+
+<p>Вершки (10–20%) — 150 мл</p>
+
+<p>Цукіні або кабачок — 1/2 шт.</p>
+
+<p>Болгарський перець — 1 шт.</p>
+
+<p>Помідори чері — жменя</p>
+
+<p>Часник — 1 зубчик</p>
+
+<p>Оливкова олія — 1–2 ст. л.</p>
+
+<p>Тертий пармезан — 2–3 ст. л.</p>
+                            </div>
+                         
+                        </div>
+                    </div>
+                    
+                    <div class="dish-card" data-id="6">
+                        <div class="dish-image">
+                            <img src="https://i.pinimg.com/736x/7e/83/cc/7e83ccbfa94b037997b8cee0906b67b2.jpg">
+                        </div>
+                        <div class="dish-info">
+                            <h3 class="dish-title">Лінгвіні</h3>
+                            <p class="dish-description">Лінгуіні — Тонші за тальятеле, але ширші за спагеті, ідеальні для легких соусів з морепродуктами</p>
+                            <div class="dish-tags">
+                                <span class="dish-tag">Паста</span>
+                                <span class="dish-tag recipe-tag" data-id="6">Рецепт</span>
+                            </div>
+                            <div class="recipe-content" id="recipe-6" style="display: none;">
+                               <p> Макарони фарфалле — 200 г</p>
+
+<p>Вершки (10–20%) — 150 мл</p>
+
+<p>Цукіні або кабачок — 1/2 шт.</p>
+
+<p>Болгарський перець — 1 шт.</p>
+
+<p>Помідори чері — жменя</p>
+
+<p>Часник — 1 зубчик</p>
+
+<p>Оливкова олія — 1–2 ст. л.</p>
+
+<p>Тертий пармезан — 2–3 ст. л.</p>
+                      
+                            </div>
+                       
+                        </div>
+                    </div>
+                    
+                    <div class="dish-card" data-id="9">
+                        <div class="dish-image">
+                            <img src="https://i.pinimg.com/736x/da/85/17/da8517b36b427e8a536438c680489a6c.jpg" >
+                        </div>
+                        <div class="dish-info">
+                            <h3 class="dish-title">Паста з лисичками</h3>
+                            <p class="dish-description">Паста з лисичками — Ніжна паста з смачними лисичками, ідеальна для кремових чи вершкових соусів.</p>
+                            <div class="dish-tags">
+                                <span class="dish-tag">Паста</span>
+                                <span class="dish-tag recipe-tag" data-id="9">Рецепт</span>
+                            </div>
+                            <div class="recipe-content" id="recipe-9" style="display: none;">
+                                <h4>Рецепт Пасти з лисичками</h4>
+                                <p>Тут буде ваш рецепт для Пасти з лисичками...</p>
+                           <p>Паста (тальятеле, фетучині або спагеті) — 200 г</p>
+
+<p>Лисички (свіжі або заморожені) — 200 г</p>
+
+<p>Цибуля шалот або звичайна — 1 шт.</p>
+
+<p>Часник — 1 зубчик</p>
+
+<p>Вершки (20–30%) — 150 мл</p>
+
+<p>Вершкове масло — 1 ст. л.</p>
+
+<p>Оливкова олія — 1 ст. л.</p>
+
+<p>Тертий пармезан — 2–3 ст. л.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    <div class="dish-card" data-id="10">
+                        <div class="dish-image">
+                            <img src="https://i.pinimg.com/736x/d9/52/d8/d952d8add36c1a1353805326433af1f5.jpg">
+                        </div>
+                        <div class="dish-info">
+                            <h3 class="dish-title">Спагеті болоньєзе</h3>
+                            <p class="dish-description">Традиційні спагеті з м'ясним соусом</p>
+                            <div class="dish-tags">
+                                <span class="dish-tag">Паста</span>
+                                <span class="dish-tag recipe-tag" data-id="10">Рецепт</span>
+                            </div>
+                            <div class="recipe-content" id="recipe-10" style="display: none;">
+                         
+                             <p>  Спагеті — 200 г</p>
+
+<p>Фарш (яловичий або змішаний) — 300 г</p>
+
+<p>Цибуля — 1 шт.</p>
+
+<p>Морква — 1 шт.</p>
+
+<p>Часник — 1–2 зубчики</p>
+
+<p>Томатна паста або пюре — 2–3 ст. л.</p>
+
+<p>Помідори у власному соку або свіжі — 200 г</p>
+
+<p>Оливкова олія — 2 ст. л.</p>
+
+<p>Сіль, перець, орегано, базилік — за смаком</p>
+
+<p>Червоне вино (опційно) — 50 мл</p>
+
+<p>Тертий пармезан — для подачі</p>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!--  Для Категорія "Десерти" -->
+            <div class="category-block">
+                <div class="category" data-category="dessert">
+                    <img src="https://i.pinimg.com/736x/4c/4c/10/4c4c107c7d98edc0d036534f4c652de5.jpg" alt="Десерти">
+                    <h2 class="category-title">Десерти</h2>
+                </div>
+                
+                <div class="dishes">
+                    <div class="dish-card" data-id="3">
+                        <div class="dish-image">
+                            <img src="https://i.pinimg.com/736x/be/50/7f/be507fc41cd9c0528a450149bdfd15fe.jpg">
+                        </div>
+                        <div class="dish-info">
+                            <h3 class="dish-title">Чіа-пудинг з ягодами</h3>
+                            <p class="dish-description">Чіа-пудинг з ягодами — Чіа замочена в рослинному молоці, подається з свіжими ягодами.</p>
+                            <div class="dish-tags">
+                                <span class="dish-tag">Десерт</span>
+                                <span class="dish-tag recipe-tag" data-id="3">Рецепт</span>
+                            </div>
+                            <div class="recipe-content" id="recipe-3" style="display: none;">
+                            
+                              <p>    Насіння чіа — 3 ст. л.</p>
+
+<p>Рослинне молоко (або звичайне) — 200 мл</p>
+
+<p>Мед або сироп (агави, кленовий) — 1 ч. л. (за бажанням)</p>
+
+<p>Ягоди (свіжі або заморожені) — жменя</p>
+
+<p>Ваніль або кориця — за бажанням</p>
+
+<p>Горіхи, кокосова стружка — для подачі (опційно)</p>
+                            </div>
+                      
+                        </div>
+                    </div>
+                    
+                    <div class="dish-card" data-id="11">
+                        <div class="dish-image">
+                            <img src="https://i.pinimg.com/736x/a4/de/96/a4de96a22a684e2ec26ac4a2a399201c.jpg" >
+                        </div>
+                        <div class="dish-info">
+                            <h5 class="dish-title">Тірамісу</h5>
+                            <p class="dish-description">Класичний італійський десерт з маскарпоне</p>
+                            <div class="dish-tags">
+                                <span class="dish-tag">Десерт</span>
+                                <span class="dish-tag recipe-tag" data-id="11">Рецепт</span>
+                            </div>
+                            <div class="recipe-content" id="recipe-11" style="display: none;">
+                        
+                             <p>     Сир маскарпоне — 250 г</p>
+
+<p>Яйця — 3 шт. (жовтки та білки окремо)</p>
+
+<p>Цукор — 70 г</p>
+
+<p>Печиво савоярді — 150–200 г</p>
+
+<p>Кава еспресо (охолоджена) — 150 мл</p>
+
+<p>Какао-порошок — для посипання</p>
+                            </div>
+                    
+                        </div>
+                    </div>
+                    
+                    <div class="dish-card" data-id="12">
+                        <div class="dish-image">
+                            <img src="https://i.pinimg.com/736x/ae/71/6a/ae716aeda71fe383c7ea12c81e44f962.jpg" >
+                        </div>
+                        <div class="dish-info">
+                            <h3 class="dish-title">Чізкейк Снікерс</h3>
+                            <p class="dish-description">Ніжний чізкейк з ягідним соусом</p>
+                            <div class="dish-tags">
+                                <span class="dish-tag">Десерт</span>
+                                <span class="dish-tag recipe-tag" data-id="12">Рецепт</span>
+                            </div>
+                            <div class="recipe-content" id="recipe-12" style="display: none;">
+                       
+                           <p>  Сир філадельфія або маскарпоне — 400 г</p>
+
+<p>Вершки для збивання (33%) — 200 мл</p>
+
+<p>Цукор — 150 г</p>
+
+<p>Яйця — 2 шт.</p>
+
+<p>Ванільний екстракт — 1 ч. л.</p>
+
+<p>Карамельний соус — 4 ст. л.</p>
+
+<p>Фундук або арахіс (подрібнений) — 100 г</p>
+
+<p>Шоколад (молочний або темний) — 100 г</p>
+                            </div>
+                       
+                        </div>
+                    </div>
+                    
+                    <div class="dish-card" data-id="13">
+                        <div class="dish-image">
+                            <img src="https://i.pinimg.com/736x/ab/92/33/ab9233e3556607afd34ec19dedf421a9.jpg" >
+                        </div>
+                        <div class="dish-info">
+                            <h3 class="dish-title">Яблучний штрудель</h3>
+                            <p class="dish-description">Австрійський яблучний штрудель</p>
+                            <div class="dish-tags">
+                                <span class="dish-tag">Десерт</span>
+                                <span class="dish-tag recipe-tag" data-id="13">Рецепт</span>
+                            </div>
+                            <div class="recipe-content" id="recipe-13" style="display: none;">
+                     <p>  Листкове тісто — 1 упаковка</p>
+
+<p>Яблука (кислі) — 4–5 шт.</p>
+
+<p>Цукор — 50–70 г</p>
+
+<p>Кориця — 1 ч. л.</p>
+
+<p>Лимонний сік — 1 ст. л.</p>
+
+<p>Волоські горіхи (подрібнені) — 50 г (за бажанням)</p>
+
+<p>Панірувальні сухарі — 2 ст. л.</p>
+
+<p>Ванільний цукор — 1 ч. л.</p>
+
+<p>Розтоплене масло — для змащування</p>
+                         
+                            </div>
+                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Категорія "Супи"  -->
+            <div class="category-block">
+                <div class="category" data-category="soup">
+                    <img src="https://i.pinimg.com/736x/4c/4c/10/4c4c107c7d98edc0d036534f4c652de5.jpg" alt="Супи"> 
+                    <h2 class="category-title">Супи</h2>
+                </div>
+                
+                <div class="dishes">
+                    <div class="dish-card" data-id="4">
+                        <div class="dish-image">
+                            <img src="https://i.pinimg.com/736x/d6/f1/d2/d6f1d2784076b2936e23b6c2f5bae8a4.jpg" >
+                        </div>
+                        <div class="dish-info">
+                            <h3 class="dish-title">Грибний суп</h3>
+                            <p class="dish-description">Ароматний суп з лісових грибів</p>
+                            <div class="dish-tags">
+                                <span class="dish-tag">Суп</span>
+                                <span class="dish-tag recipe-tag" data-id="4">Рецепт</span>
+                            </div>
+                            <div class="recipe-content" id="recipe-4" style="display: none;">
+                      
+                                <p>    Гриби (свіжі або сушені) — 300–400 г</p>
+
+<p>Цибуля — 1 шт.</p>
+
+<p>Морква — 1 шт.</p>
+
+<p>Картопля — 2 шт.</p>
+
+<p>Часник — 1–2 зубчики</p>
+
+<p>Овочевий або курячий бульйон — 1,5 л</p>
+
+<p>Вершки (10–20%) — 100–150 мл</p>
+
+<p>Оливкова олія або вершкове масло — 2 ст. л.</p>
+
+<p>Сіль, перець — за смаком</p>
+
+<p>Зелень (петрушка, кріп) — для подачі</p>
+                            </div>
+                   
+                        </div>
+                    </div>
+                    
+                    <div class="dish-card" data-id="14">
+                        <div class="dish-image">
+                            <img src="https://i.pinimg.com/736x/62/ec/97/62ec97e41239bb12c63cc445207398f4.jpg" >
+                        </div>
+                        <div class="dish-info">
+                            <h3 class="dish-title">Томатний суп із креветками</h3>
+                            <p class="dish-description">Томатний суп із креветками — Ароматний суп з томатів і креветок, злегка гострий і кремовий.</p>
+                            <div class="dish-tags">
+                                <span class="dish-tag">Суп</span>
+                                <span class="dish-tag recipe-tag" data-id="14">Рецепт</span>
+                            </div>
+                            <div class="recipe-content" id="recipe-14" style="display: none;">
+                    <p>   Помідори (свіжі або консервовані) — 500 г</p>
+
+<p>Креветки (очищені) — 200 г</p>
+
+<p>Цибуля — 1 шт.</p>
+
+<p>Часник — 2 зубчики</p>
+
+<p>Оливкова олія — 2 ст. л.</p>
+
+<p>Овочевий або курячий бульйон — 1 л</p>
+
+<p>Вершки (10–20%) — 100 мл</p>
+
+<p>Сіль, перець — за смаком</p>
+
+<p>Базилік або орегано — 1 ч. л.</p>
+
+<p>Цукор — 1 ч. л. (для збалансування кислинки)</p>
+
+<p>Лимонний сік — 1 ст. л. (за бажанням)</p>
+                            
+                            </div>
+                      
+                        </div>
+                    </div>
+                    
+                    <div class="dish-card" data-id="15">
+                        <div class="dish-image">
+                            <img src="https://i.pinimg.com/736x/2c/b7/c7/2cb7c78efd87b01330b8f85d2f5b5aec.jpg">
+                        </div>
+                        <div class="dish-info">
+                            <h3 class="dish-title">Гаспачо</h3>
+                            <p class="dish-description">Гаспачо — Холодний томатний суп з огірками, перцем і оливковою олією.</p>
+                            <div class="dish-tags">
+                                <span class="dish-tag">Суп</span>
+                                <span class="dish-tag recipe-tag" data-id="15">Рецепт</span>
+                            </div>
+                            <div class="recipe-content" id="recipe-15" style="display: none;">
+                     <p>   Помідори (свіжі) — 5–6 шт.</p></p>
+
+<p>Огірок — 1 шт.</p>
+
+<p>Болгарський перець — 1 шт.</p>
+
+<p>Червона цибуля — 1/2 шт.</p>
+
+<p>Часник — 1–2 зубчики</p>
+
+<p>Оливкова олія — 3 ст. л.</p>
+
+<p>Білий винний оцет — 1–2 ст. л.</p>
+
+<p>Хліб (білий або багет) — 1–2 скибочки (за бажанням)</p>
+
+<p>Сіль, перець — за смаком</p>
+                      
+                            </div>
+                      
+                        </div>
+                    </div>
+                    
+                    <div class="dish-card" data-id="16">
+                        <div class="dish-image">
+                            <img src="https://i.pinimg.com/736x/0e/09/4a/0e094a9bf16c75269aa87e37b28464a6.jpg" >
+                        </div>
+                        <div class="dish-info">
+                            <h3 class="dish-title">Суп-пюре із червоної сочевиці</h3>
+                            <p class="dish-description">Суп-пюре із червоної сочевиці — Кремовий суп з червоної сочевиці, моркви і спецій.</p>
+                            <div class="dish-tags">
+                                <span class="dish-tag">Суп</span>
+                                <span class="dish-tag recipe-tag" data-id="16">Рецепт</span>
+                            </div>
+                            <div class="recipe-content" id="recipe-16" style="display: none;">
+                           
+                              <p> Червона сочевиця — 200 г</p>
+
+<p>Цибуля — 1 шт.</p>
+
+<p>Морква — 1 шт.</p>
+
+<p>Часник — 2 зубчики</p>
+
+<p>Оливкова олія — 2 ст. л.</p>
+
+<p>Овочевий або курячий бульйон — 1,5 л</p>
+
+<p>Томатна паста — 1 ст. л.</p>
+
+<p>Куркума, кумин — 1/2 ч. л.</p>
+
+<p>Сіль, перець — за смаком</p>
+                              
+                            </div>
+                        
+                         
+                        </div>
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
