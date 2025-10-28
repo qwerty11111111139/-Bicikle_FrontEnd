@@ -1,0 +1,306 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #fefaf8; 
+}
+
+.header {
+   background-color:  #b89c8d; 
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 2.1rem;
+}
+
+.nav {
+    background-color:#b89c8d  ; 
+    padding: 13px 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-link {
+    color: white; /* колір кнопки Home !!!!!!!!!!!!!! */
+    text-decoration: none;
+    font-size: 1.rem;
+    font-weight: bold;
+    padding: 0 20px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ffe5e5;
+}
+
+.content-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 px;
+}
+
+/* Стилі для блоків Їжі */
+.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin: 39px 0;
+}
+
+.category-block {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.category {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.category:hover {
+    background-color: #e0e0e0;
+}
+
+.category-title {
+    margin-left: 15px;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.category img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.dishes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+    padding: 0 15px;
+}
+
+.category-block.active .dishes {
+    max-height: 2000px;
+    opacity: 1;
+    padding: 15px;
+}
+
+/* Стилі для карток страв */
+.dish-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.dish-card:hover {
+    transform: translateY(-5px);
+}
+
+.dish-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.dish-info {
+    padding: 15px;
+}
+
+.dish-title {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.dish-description {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.dish-tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.dish-tag {
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-right: 8px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dish-tag:hover {
+    background-color: #e0e0e0;
+}
+
+.recipe-tag {
+    background-color: #4caf50;
+    color: white;
+}
+
+.recipe-tag:hover {
+    background-color: #388e3c;
+}
+
+.recipe-content {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    border-left: 4px solid #4caf50;
+}
+
+
+
+.search-input {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    width: 200px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+/* Стилі для фільтрації */
+.active-filter-message {
+    background-color: #f8f8f8;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: fadeIn 0.3s;
+}
+
+.clear-filter {
+    cursor: pointer;
+    font-size: 20px;
+    color: #666;
+}
+
+.clear-filter:hover {
+    color: #ff5252;
+}
+
+
+/* Стилі для модального вікна */
+.recipe-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: modalOpen 0.4s;
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-modal:hover {
+    color: #ff5252;
+}
+
+.modal-body {
+    padding: 20px 30px 30px;
+}
+
+.modal-body h2 {
+    color: #333;
+    margin-top: 0;
+    padding-right: 30px;
+}
+
+.modal-image {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.modal-image img {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-description {
+    color: #555;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.modal-recipe h3 {
+    color: #4caf50;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.modal-recipe ul {
+    padding-left: 20px;
+}
+
+.modal-recipe li {
+    margin-bottom: 5px;
+}
+
+
+}
+
