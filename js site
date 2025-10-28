@@ -1,0 +1,397 @@
+// Очікуємо повного завантаження DOM перед виконанням коду
+document.addEventListener('DOMContentLoaded', function() {
+    // Ініціалізація функціоналу для розгортання/згортання категорій
+    initCategoryToggle();
+    
+    // Ініціалізація функціоналу для відображення рецептів
+    initRecipeDisplay();
+    
+    // Ініціалізація функціоналу фільтрації за тегами
+    initTagFiltering();
+    
+  
+    handleImageErrors();
+    
+   
+    setupModalViewer();
+    
+    /**
+     * Функція, що ініціалізує розгортання т згортання категорій Їжі
+     */
+    function initCategoryToggle() {
+        // Отримуємо всі елементи категорій
+        const categories = document.querySelectorAll('.category');
+        
+        // Додаємо обробник подій для кожної категорії
+        categories.forEach(function(category) {
+            category.addEventListener('click', function() {
+                // Отримуємо батьківський елемент (блок категорії)
+                const categoryBlock = this.parentElement;
+                
+               
+                const dishesContainer = categoryBlock.querySelector('.dishes');
+                
+                // Перевіряємо, чи активна категорія
+                const isOpen = categoryBlock.classList.contains('active');
+                
+                // Закриваємо всі категорії перед відкриттям нової
+                const allCategoryBlocks = document.querySelectorAll('.category-block');
+                allCategoryBlocks.forEach(function(block) {
+                    // Знімаємо клас active з блоку категорії
+                    block.classList.remove('active');
+                    
+                    // Отримуємо контейнер зі стравами для блоку
+                    const dishes = block.querySelector('.dishes');
+                    
+                    
+                    if (dishes) {
+                        dishes.style.maxHeight = '0px';
+                        dishes.style.opacity = '0';
+                    }
+                });
+                
+        
+                if (!isOpen) {
+                   
+                    categoryBlock.classList.add('active');
+                    
+                    
+                    if (dishesContainer) {
+                        dishesContainer.style.maxHeight = dishesContainer.scrollHeight + 'px';
+                        dishesContainer.style.opacity = '1';
+                    }
+                }
+            });
+        });
+        
+  
+        if (categories.length > 0) {
+            const firstCategoryBlock = categories[0].parentElement;
+            const firstDishesContainer = firstCategoryBlock.querySelector('.dishes');
+            
+     
+            firstCategoryBlock.classList.add('active');
+            
+          
+            if (firstDishesContainer) {
+                firstDishesContainer.style.maxHeight = firstDishesContainer.scrollHeight + 'px';
+                firstDishesContainer.style.opacity = '1';
+            }
+        }
+    }
+    
+    /**
+     * Функція, що ініціалізує відображення рецептів
+     */
+    function initRecipeDisplay() {
+       
+        const recipeTags = document.querySelectorAll('.recipe-tag');
+        
+  
+        recipeTags.forEach(function(tag) {
+            tag.addEventListener('click', function(event) {
+                // Запобігаємо спрацюванню події кліку на батьківському елементі
+                event.stopPropagation();
+                
+            
+                const recipeId = this.getAttribute('data-id');
+                
+             
+                const recipeContent = document.getElementById('recipe-' + recipeId);
+                
+             
+                const allRecipeContents = document.querySelectorAll('.recipe-content');
+                allRecipeContents.forEach(function(content) {
+               
+                    if (content.id !== 'recipe-' + recipeId) {
+                        content.style.display = 'none';
+                    }
+                });
+                
+
+                if (recipeContent) {
+             
+                    if (recipeContent.style.display === 'none' || recipeContent.style.display === '') {
+                     
+                        recipeContent.style.display = 'block';
+                        
+                        // Анімоване прокручування до рецепту
+                        setTimeout(function() {
+                            recipeContent.scrollIntoView({ 
+                                behavior: 'smooth', 
+                                block: 'nearest' 
+                            });
+                        }, 100);
+                    } else {
+                        // Приховуємо рецепт
+                        recipeContent.style.display = 'none';
+                    }
+                }
+            });
+        });
+    }
+    
+    /**
+     * Функція, що ініціалізує фільтрацію за тегами
+     */
+    function initTagFiltering() {
+        // Отримуємо всі теги страв, крім тегів рецептів
+        const dishTags = document.querySelectorAll('.dish-tag:not(.recipe-tag)');
+        
+        // Додаємо обробник подій для кожного тегу
+        dishTags.forEach(function(tag) {
+            tag.addEventListener('click', function(event) {
+                // Запобігаємо спрацюванню події кліку на батьківському елементі
+                event.stopPropagation();
+                
+                // Отримуємо текст тегу
+                const tagText = this.textContent.trim().toLowerCase();
+                
+                // Фільтруємо страви за обраним тегом
+                const allDishCards = document.querySelectorAll('.dish-card');
+                allDishCards.forEach(function(card) {
+                    // Отримуємо всі теги страви, крім тегів рецептів
+                    const cardTagElements = card.querySelectorAll('.dish-tag:not(.recipe-tag)');
+                    
+                    // Перетворюємо колекцію тегів у масив текстових значень
+                    const cardTags = Array.from(cardTagElements).map(function(t) {
+                        return t.textContent.trim().toLowerCase();
+                    });
+                    
+                    // Показуємо або приховуємо страву в залежності від наявності тегу
+                    if (cardTags.includes(tagText)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Показуємо повідомлення про активний фільтр
+                let activeFilterMessage = document.querySelector('.active-filter-message');
+                
+                // Якщо повідомлення не існує, створюємо його
+                if (!activeFilterMessage) {
+                    activeFilterMessage = document.createElement('div');
+                    activeFilterMessage.className = 'active-filter-message';
+                    
+                    // Додаємо повідомлення на сторінку
+                    const contentContainer = document.querySelector('.content-container');
+                    contentContainer.insertBefore(activeFilterMessage, contentContainer.firstChild);
+                }
+                
+                // Оновлюємо вміст повідомлення
+                activeFilterMessage.innerHTML = `Фільтр за тегом: <strong>${tagText}</strong> <span class="clear-filter">&times;</span>`;
+                
+                // Додаємо обробник події для кнопки очищення фільтру
+                const clearFilterButton = document.querySelector('.clear-filter');
+                clearFilterButton.addEventListener('click', function() {
+                    // Показуємо всі страви
+                    allDishCards.forEach(function(card) {
+                        card.style.display = 'block';
+                    });
+                    
+                    // Видаляємо повідомлення про активний фільтр
+                    activeFilterMessage.remove();
+                });
+            });
+        });
+    }
+    
+    /**
+     * Функція, що створює поле пошуку
+     */
+    function createSearchField() {
+        // Створюємо контейнер для пошуку
+        const searchContainer = document.createElement('div');
+        searchContainer.className = 'search-container';
+        
+        // Створюємо поле введення
+        const searchInput = document.createElement('input');
+        searchInput.type = 'text';
+        searchInput.placeholder = 'Пошук страв...';
+        searchInput.className = 'search-input';
+        
+        // Додаємо поле введення в контейнер
+        searchContainer.appendChild(searchInput);
+        
+        // Додаємо контейнер на сторінку
+        const navContainer = document.querySelector('.nav-container');
+        navContainer.appendChild(searchContainer);
+        
+        // Додаємо обробник події введення тексту
+        searchInput.addEventListener('input', function() {
+            // Отримуємо текст пошуку
+            const searchText = this.value.toLowerCase();
+            
+            // Фільтруємо страви за текстом пошуку
+            const allDishCards = document.querySelectorAll('.dish-card');
+            allDishCards.forEach(function(card) {
+                // Отримуємо текстовий вміст назви та опису страви
+                const title = card.querySelector('.dish-title').textContent.toLowerCase();
+                const description = card.querySelector('.dish-description').textContent.toLowerCase();
+                
+                // Показуємо або приховуємо страву в залежності від відповідності тексту пошуку
+                if (title.includes(searchText) || description.includes(searchText)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Відкриваємо всі категорії під час пошуку, якщо є текст пошуку
+            if (searchText.length > 0) {
+                const allCategoryBlocks = document.querySelectorAll('.category-block');
+                allCategoryBlocks.forEach(function(block) {
+                    // Додаємо клас active до блоку категорії
+                    block.classList.add('active');
+                    
+                    // Розгортаємо контейнер зі стравами
+                    const dishes = block.querySelector('.dishes');
+                    if (dishes) {
+                        dishes.style.maxHeight = '1000px'; // Достатньо великий розмір
+                        dishes.style.opacity = '1';
+                    }
+                });
+            } else {
+                // При порожньому пошуковому полі повертаємо стандартний вигляд
+                const allCategoryBlocks = document.querySelectorAll('.category-block');
+                allCategoryBlocks.forEach(function(block, index) {
+                    if (index === 0) {
+                        // Перша категорія залишається відкритою
+                        block.classList.add('active');
+                        const dishes = block.querySelector('.dishes');
+                        if (dishes) {
+                            dishes.style.maxHeight = dishes.scrollHeight + 'px';
+                            dishes.style.opacity = '1';
+                        }
+                    } else {
+                        // Інші категорії закриваються
+                        block.classList.remove('active');
+                        const dishes = block.querySelector('.dishes');
+                        if (dishes) {
+                            dishes.style.maxHeight = '0px';
+                            dishes.style.opacity = '0';
+                        }
+                    }
+                });
+            }
+        });
+    }
+    
+  
+    
+    /**
+     * Функція, що обробляє помилки завантаження зображень
+     */
+    function handleImageErrors() {
+        // Отримуємо всі зображення на сторінці
+        const images = document.querySelectorAll('img');
+        
+        // Додаємо обробник помилок для кожного зображення
+        images.forEach(function(img) {
+            img.onerror = function() {
+                // Замінюємо зображення на заглушку в разі помилки
+                this.src = 'https://via.placeholder.com/300x200?text=Немає+зображення';
+                this.onerror = null; // Запобігаємо зациклюванню
+            };
+        });
+    }
+    
+    /**
+     * Функція, що налаштовує модальне вікно для перегляду рецептів
+     */
+    function setupModalViewer() {
+        // Створюємо модальне вікно
+        const modal = document.createElement('div');
+        modal.className = 'recipe-modal';
+        
+        // Додаємо вміст модального вікна
+        modal.innerHTML = `
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-body"></div>
+            </div>
+        `;
+        
+        // Додаємо модальне вікно на сторінку
+        document.body.appendChild(modal);
+        
+        // Додаємо обробники подій для відкриття модального вікна
+        const allDishCards = document.querySelectorAll('.dish-card');
+        allDishCards.forEach(function(card) {
+            card.addEventListener('click', function(event) {
+                // Перевіряємо, що клік не був на тегу рецепту
+                if (!event.target.classList.contains('recipe-tag')) {
+                    // Отримуємо дані про страву
+                    const title = this.querySelector('.dish-title').textContent;
+                    const description = this.querySelector('.dish-description').textContent;
+                    const image = this.querySelector('.dish-image img').src;
+                    const recipeId = this.getAttribute('data-id');
+                    
+                    // Складаємо вміст для модального вікна
+                    let modalContent = `
+                        <h2>${title}</h2>
+                        <div class="modal-image">
+                            <img src="${image}" alt="${title}">
+                        </div>
+                        <p class="modal-description">${description}</p>
+                        <div class="modal-recipe">
+                    `;
+                    
+                    // Додаємо інгредієнти зі списку p-тегів
+                    const ingredientParagraphs = this.querySelectorAll('p');
+                    const ingredients = [];
+                    
+                    // Перетворюємо колекцію p-тегів у масив текстових значень
+                    ingredientParagraphs.forEach(function(paragraph) {
+                        ingredients.push(paragraph.textContent);
+                    });
+                    
+                    // Якщо є інгредієнти, додаємо їх до модального вікна
+                    if (ingredients.length > 0) {
+                        modalContent += '<h3>Інгредієнти:</h3><ul>';
+                        
+                        // Додаємо кожен інгредієнт у вигляді елемента списку
+                        ingredients.forEach(function(ingredient) {
+                            modalContent += `<li>${ingredient}</li>`;
+                        });
+                        
+                        modalContent += '</ul>';
+                    }
+                    
+                    modalContent += '</div>';
+                    
+                    // Заповнюємо модальне вікно контентом
+                    modal.querySelector('.modal-body').innerHTML = modalContent;
+                    
+                    // Показуємо модальне вікно
+                    modal.style.display = 'block';
+                    
+                    // Блокуємо прокрутку основної сторінки
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
+        // Додаємо обробник події для кнопки закриття модального вікна
+        const closeButton = modal.querySelector('.close-modal');
+        closeButton.addEventListener('click', function() {
+            // Приховуємо модальне вікно
+            modal.style.display = 'none';
+            
+            // Відновлюємо прокрутку основної сторінки
+            document.body.style.overflow = '';
+        });
+        
+        // Додаємо обробник події для закриття модального вікна при кліку поза його вмістом
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                // Приховуємо модальне вікно
+                modal.style.display = 'none';
+                
+                // Відновлюємо прокрутку основної сторінки
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
