@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Смачно :) — Контакти</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/contacts.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="logo">Смачно :)</div>
+      <nav class="nav">
+        <a href="#">Мій акаунт</a>
+        <a href="golovna.html">Головна</a>
+        <a href="#">Рецепти</a>
+        <a href="about.html">Про нас</a>
+        <a class="active" href="contacts.html">Контакти</a>
+      </nav>
+      <div class="actions">
+        <input class="search" type="search" placeholder="Пошук..." aria-label="Пошук">
+        <button class="btn login">Увійти</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container contact-grid">
+    <section class="contact-form" aria-labelledby="form-title">
+      <h1 id="form-title">Зв'яжіться з нами</h1>
+      <p class="lead">Маєте питання чи пропозиції? Напишіть нам!</p>
+      
+      <form id="contactForm" class="form">
+        <div class="form-group">
+          <label for="name">Ім'я</label>
+          <input type="text" id="name" name="name" required
+                 placeholder="Як до вас звертатися">
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" required
+                 placeholder="Ваша електронна пошта">
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Тема</label>
+          <input type="text" id="subject" name="subject" required
+                 placeholder="Про що хочете написати">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Повідомлення</label>
+          <textarea id="message" name="message" required
+                    placeholder="Ваше повідомлення" rows="5"></textarea>
+        </div>
+
+        <button type="submit" class="btn submit-btn">Надіслати</button>
+        <div id="formMsg" class="form-msg" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <aside class="contact-cards">
+      <article class="card social">
+        <div class="card-icon">🌐</div>
+        <h2>Ми у соцмережах</h2>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">
+            <span class="icon">📱</span> Facebook
+          </a>
+          <a href="#" aria-label="Instagram">
+            <span class="icon">📸</span> Instagram
+          </a>
+          <a href="#" aria-label="Twitter">
+            <span class="icon">🐦</span> Twitter
+          </a>
+          <a href="#" aria-label="YouTube">
+            <span class="icon">🎥</span> YouTube
+          </a>
+        </div>
+      </article>
+
+      <article class="card support">
+        <div class="card-icon">💬</div>
+        <h2>Служба підтримки</h2>
+        <p>Працюємо щодня з 9:00 до 21:00</p>
+        <div class="contact-info">
+          <p><span class="icon">✉️</span> support@smachno.ua</p>
+          <p><span class="icon">📞</span> 0 800 123 456</p>
+        </div>
+      </article>
+
+      <article class="card address">
+        <div class="card-icon">📍</div>
+        <h2>Наші координати</h2>
+        <address class="contact-info">
+          <p>вул. Смачна, 123</p>
+          <p>м. Київ, 01001</p>
+          <p><span class="icon">📞</span> +380 44 123 4567</p>
+        </address>
+      </article>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year">2025</span> Смачно :)</div>
+      <div class="social">Instagram · Facebook · YouTube</div>
+    </div>
+  </footer>
+
+  <script src="js/contacts.js" defer></script>
+</body>
+</html>
