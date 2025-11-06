@@ -1,210 +1,582 @@
-
 <!doctype html>
 <html lang="uk">
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width,initial-scale=1" />
-	<title>CookEasy — Смачні рецепти</title>
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-		<meta name="description" content="CookEasy — надихайся і готуй смачні страви: прості рецепти з фото, відео та порадами.">
-		<link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CookEasy — Смачні рецепти</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="CookEasy — надихайся і готуй смачні страви: прості рецепти з фото, відео та порадами.">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root{
+            --bg:#1E1E2A;
+            --card:#22212b;
+            --muted:#bfc2cc;
+            --accent:#ff7a2d;
+            --radius:14px;
+            --glass: rgba(255,255,255,0.03);
+            --shadow: 0 6px 20px rgba(2,6,23,0.6);
+            font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+        }
+        html,body{
+            height:100%;
+            margin:0;
+            background:var(--bg);
+            color:#fff;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+        }
+        header{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:22px 36px;
+            gap:18px;
+            position:sticky;
+            top:0;
+            background:linear-gradient(180deg, rgba(30,30,42,0.9), rgba(30,30,42,0.6));
+            backdrop-filter: blur(6px);
+            z-index:40;
+            border-bottom:1px solid rgba(255,255,255,0.03);
+        }
+        .logo{
+            display:flex;
+            align-items:center;
+            gap:10px;
+            font-weight:700;
+            font-size:20px;
+        }
+        .logo .mark{
+            background:linear-gradient(135deg,var(--accent),#ff9d5c);
+            padding:8px;
+            border-radius:10px;
+            box-shadow: 0 6px 18px rgba(255,122,45,0.18);
+        }
+        .search-wrap{
+            flex:1;
+            max-width:720px;
+            margin:0 28px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+        .search{
+            width:100%;
+            display:flex;
+            align-items:center;
+            gap:10px;
+            background:var(--card);
+            padding:10px 12px;
+            border-radius:12px;
+            box-shadow:var(--shadow);
+            border:1px solid rgba(255,255,255,0.03);
+        }
+        .search input{
+            background:transparent;
+            border:0;
+            outline:0;
+            color:#fff;
+            font-size:15px;
+            flex:1;
+            padding:8px 6px;
+        }
+        .search button{
+            background:var(--accent);
+            border:0;
+            color:#fff;
+            padding:8px 12px;
+            border-radius:10px;
+            font-weight:600;
+            cursor:pointer;
+            box-shadow:0 6px 18px rgba(255,122,45,0.16);
+        }
+        .nav{
+            display:flex;
+            gap:18px;
+            align-items:center;
+        }
+        .nav a{
+            color:var(--muted);
+            text-decoration:none;
+            font-weight:500;
+            padding:8px 10px;
+            border-radius:8px;
+        }
+        .nav a.active, .nav a:hover{
+            color:#fff;
+            background:rgba(255,255,255,0.02);
+        }
+        .login-btn{
+            background:var(--accent);
+            color:#1b1320;
+            padding:10px 14px;
+            border-radius:10px;
+            font-weight:700;
+            border:0;
+            cursor:pointer;
+            margin-left:8px;
+        }
+        main{padding:36px; max-width:1200px; margin:0 auto;}
+        .grid{
+            display:grid;
+            gap:18px;
+        }
+        .recipe-of-day{
+            display:grid;
+            grid-template-columns: 1fr 420px;
+            gap:22px;
+            align-items:stretch;
+            margin-bottom:28px;
+        }
+        .card{
+            background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border-radius:var(--radius);
+            overflow:hidden;
+            box-shadow:var(--shadow);
+            border:1px solid rgba(255,255,255,0.03);
+        }
+        .rod-img{
+            height:100%;
+            min-height:320px;
+            background-size:cover;
+            background-position:center;
+        }
+        .rod-meta{
+            padding:22px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            gap:12px;
+        }
+        .rod-meta h2{
+            margin:0;
+            font-size:26px;
+            letter-spacing:-0.2px;
+        }
+        .rod-meta p{margin:0;color:var(--muted);}
+        .cta{
+            margin-top:12px;
+            display:flex;
+            gap:12px;
+            align-items:center;
+        }
+        .btn-ghost{
+            background:transparent;
+            color:var(--muted);
+            border:1px solid rgba(255,255,255,0.04);
+            padding:8px 12px;
+            border-radius:10px;
+            cursor:pointer;
+        }
+        .btn-primary{
+            background:var(--accent);
+            color:#1b1320;
+            padding:10px 14px;
+            border-radius:12px;
+            font-weight:700;
+            border:0;
+            cursor:pointer;
+            box-shadow:0 8px 26px rgba(255,122,45,0.12);
+        }
+        .section-title{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:12px;
+            gap:12px;
+        }
+        .section-title h3{margin:0;color:#fff;}
+        .cards-row{
+            display:grid;
+            grid-template-columns: repeat(4,1fr);
+            gap:14px;
+        }
+        .recipe-card{
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+            padding:12px;
+            background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+            border-radius:12px;
+            min-height:220px;
+            position:relative;
+            overflow:hidden;
+        }
+        .recipe-card img{
+            width:100%;
+            height:120px;
+            object-fit:cover;
+            border-radius:10px;
+            display:block;
+        }
+        .recipe-card .meta{display:flex;flex-direction:column;gap:6px;}
+        .recipe-card .meta strong{font-size:15px;}
+        .recipe-card .meta .muted{color:var(--muted);font-size:13px}
+        .recipe-card .info{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-top:auto;
+        }
+        .like{
+            background:rgba(255,255,255,0.03);
+            padding:8px;
+            border-radius:10px;
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            color:var(--muted);
+            border:1px solid rgba(255,255,255,0.02);
+            cursor:pointer;
+        }
+        .categories-grid{
+            display:grid;
+            grid-template-columns: repeat(4,1fr);
+            gap:14px;
+        }
+        .cat-card{
+            padding:18px;
+            border-radius:14px;
+            background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            display:flex;
+            flex-direction:column;
+            gap:12px;
+            align-items:flex-start;
+            box-shadow:var(--shadow);
+            border:1px solid rgba(255,255,255,0.03);
+        }
+        .cat-card .icon{
+            font-size:26px;
+            background:rgba(255,255,255,0.02);
+            padding:10px;
+            border-radius:10px;
+        }
+        .small{font-size:13px;color:var(--muted)}
+        .footer-inner{max-width:1200px;margin:40px auto 80px;padding:0 36px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:12px}
+        @media (max-width:1100px){
+            .recipe-of-day{grid-template-columns:1fr;grid-auto-rows:auto}
+            .cards-row{grid-template-columns: repeat(2,1fr)}
+            .categories-grid{grid-template-columns: repeat(2,1fr)}
+            .search-wrap{display:none}
+        }
+        @media (max-width:640px){
+            .cards-row{grid-template-columns:1fr}
+            .nav{display:none}
+            .header-actions{display:flex;gap:8px}
+        }
+    </style>
 </head>
 <body>
 
-	<header>
-		<div class="logo" aria-label="CookEasy logo">🍳 CookEasy</div>
-		<nav class="nav" aria-label="Головне меню">
-			<a href="#">Головна</a>
-			<a href="#recipes">Категорії</a>
-			<a href="about.html">Про нас</a>
-			<a href="#contacts">Контакти</a>
-		</nav>
-		<div class="controls">
-			<button class="btn secondary" id="searchBtn" aria-expanded="false">🔍 Пошук рецепта</button>
-			<button class="btn" id="mobileMenuBtn" aria-expanded="false" aria-controls="mobileMenu">☰</button>
-		</div>
-	</header>
+    <header>
+        <div style="display:flex;align-items:center;gap:14px">
+            <div class="logo" aria-label="CookEasy logo">
+                <div class="mark">🍳</div>
+                <div>
+                    <div style="font-weight:700">CookEasy</div>
+                    <div style="font-size:12px;color:var(--muted)">Смачні рецепти</div>
+                </div>
+            </div>
+            <nav class="nav" aria-label="Головне меню">
+                <a href="#" class="muted">Мій рецепт</a>
+                <a href="#" class="active">Головна</a>
+                <a href="#recipes">Рецепти</a>
+                <a href="about.html">Про нас</a>
+                <a href="#contacts">Контакти</a>
+            </nav>
+        </div>
 
-	<main>
-		<section class="hero" role="region" aria-label="Головний банер">
-			<div class="hero-inner">
-				<div class="pill">Надихайся щодня</div>
-				<h1>Готуй із задоволенням! Знаходь рецепти, які смакують кожному.</h1>
-				<p>Прості покрокові рецепти, великі фото та корисні поради. Ідеї для сніданків, обідів, десертів та вегетаріанських страв.</p>
-				<div style="display:flex;gap:12px;margin-top:12px">
-					<a class="btn" href="#recipes">Переглянути рецепти</a>
-					<a class="btn secondary" href="#blog">Поради та блог</a>
-				</div>
-			</div>
-		</section>
+        <div class="search-wrap" role="search" aria-label="Пошук рецептів">
+            <form class="search" onsubmit="event.preventDefault();document.getElementById('searchInput').blur();">
+                <input id="searchInput" type="search" placeholder="Пошук: назва, інгредієнт або тип страви" aria-label="Пошук рецептів">
+                <button aria-label="Пошук">Пошук</button>
+            </form>
+        </div>
 
-		<section class="container" id="recipes">
-			<div class="section-title">
-				<h2>Популярні рецепти</h2>
-				<div style="display:flex;gap:10px;align-items:center">
-					<label for="sort" class="sr-only">Сортувати</label>
-					<select id="sort" class="select" aria-label="Сортувати рецепти">
-						<option value="popular">За популярністю</option>
-						<option value="difficulty">За складністю</option>
-					</select>
-					<a class="muted" href="#">Переглянути всі рецепти →</a>
-				</div>
-			</div>
+        <div style="display:flex;align-items:center;gap:10px">
+            <button class="btn-ghost" aria-label="Мій профіль">🔔</button>
+            <a href="#" class="login-btn" aria-label="Увійти">Увійти</a>
+        </div>
+    </header>
 
-			<div id="recipesGrid" class="grid" aria-live="polite">
-				<!-- Card format: data-popularity (0-100), data-difficulty (1-easy,2-medium,3-hard) -->
-				<article class="card" data-popularity="92" data-difficulty="1">
-					<img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&q=70" alt="Паста з томатним соусом">
-					<div class="meta">
-						<h3>Паста в ароматному томатному соусі</h3>
-						<p>Швидкий сімейний обід за 25 хвилин. Ідеально з базиліком.</p>
-						<div class="rating">⭐ 4.8 <small class="muted">· Легко</small></div>
-					</div>
-				</article>
+    <main>
+        <!-- Рецепт дня -->
+        <section class="recipe-of-day">
+            <article class="card" style="display:flex;overflow:hidden;">
+                <div class="rod-img" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=70');"></div>
+                <div class="rod-meta">
+                    <div style="display:flex;gap:12px;align-items:center">
+                        <span class="small" style="background:rgba(255,255,255,0.02);padding:6px 10px;border-radius:999px;color:var(--muted)">Рецепт дня</span>
+                        <span class="small">⭐ 4.9 · 1250 likes</span>
+                    </div>
+                    <h2>Пухкий омлет з травами та помідорами</h2>
+                    <p class="small">Ніжний сніданок, який готується за 10 хвилин. Лише яйця, вершки та свіжі трави — ідеально підходить для сімейного ранку.</p>
+                    <div class="cta">
+                        <button class="btn-primary">Переглянути рецепт</button>
+                        <button class="btn-ghost">Додати до мого списку</button>
+                    </div>
+                </div>
+            </article>
+        </section>
 
-				<article class="card" data-popularity="85" data-difficulty="2">
-					<img src="https://images.unsplash.com/photo-1604908732515-8f0b0b4b3a7f?auto=format&fit=crop&w=1200&q=70" alt="Салат зі свіжих овочів">
-					<div class="meta">
-						<h3>Салат зі свіжих овочів та кіноа</h3>
-						<p>Легкий та поживний варіант для обіду або як гарнір.</p>
-						<div class="rating">⭐ 4.6 <small class="muted">· Середньо</small></div>
-					</div>
-				</article>
+        <!-- Категорії рецептів -->
+        <section id="recipes">
+            <div class="section-title">
+                <h3>Вегетаріанські</h3>
+                <div class="small">Показано 4 найпопулярніших</div>
+            </div>
+            <div class="cards-row" aria-live="polite">
+                <!-- 4 картки -->
+                <article class="recipe-card card">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=60" alt="Паста з томатним соусом">
+                    <div class="meta">
+                        <strong>Паста з томатами та базиліком</strong>
+                        <div class="muted">Вегетаріанська · 25 хв</div>
+                    </div>
+                    <div class="info">
+                        <span class="small">Легко</span>
+                        <button class="like" aria-label="Вподобати">❤ <span style="opacity:0.8;margin-left:6px">128</span></button>
+                    </div>
+                </article>
 
-				<article class="card" data-popularity="76" data-difficulty="3">
-					<img src="https://images.unsplash.com/photo-1544013587-c2f8e8bbf0f0?auto=format&fit=crop&w=1200&q=70" alt="Рецепт запеченої риби">
-					<div class="meta">
-						<h3>Запечена риба з цитрусами</h3>
-						<p>Вишуканий обід для гостей. Поради по запіканню — в статті.</p>
-						<div class="rating">⭐ 4.7 <small class="muted">· Важко</small></div>
-					</div>
-				</article>
+                <article class="recipe-card card">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=60" alt="Салат кіноа">
+                    <div class="meta">
+                        <strong>Салат з кіноа та авокадо</strong>
+                        <div class="muted">Вегетаріанська · 18 хв</div>
+                    </div>
+                    <div class="info">
+                        <span class="small">Легко</span>
+                        <button class="like" aria-label="Вподобати">❤ <span style="opacity:0.8;margin-left:6px">94</span></button>
+                    </div>
+                </article>
 
-				<article class="card" data-popularity="88" data-difficulty="1">
-					<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=70" alt="Омлет з травами">
-					<div class="meta">
-						<h3>Пухкий омлет з травами</h3>
-						<p>Ідеальний сніданок для бадьорого ранку.</p>
-						<div class="rating">⭐ 4.9 <small class="muted">· Легко</small></div>
-					</div>
-				</article>
+                <article class="recipe-card card">
+                    <img src="https://images.unsplash.com/photo-1521305916504-4a1121188589?auto=format&fit=crop&w=800&q=60" alt="Соте з овочів">
+                    <div class="meta">
+                        <strong>Овочеве соте з гарніром</strong>
+                        <div class="muted">Вегетаріанська · 30 хв</div>
+                    </div>
+                    <div class="info">
+                        <span class="small">Середньо</span>
+                        <button class="like" aria-label="Вподобати">❤ <span style="opacity:0.8;margin-left:6px">76</span></button>
+                    </div>
+                </article>
 
-				<article class="card" data-popularity="70" data-difficulty="2">
-					<img src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&w=1200&q=70" alt="Десерт з ягодами">
-					<div class="meta">
-						<h3>Легкий ягідний десерт</h3>
-						<p>Освіжаючий десерт для літніх вечорів.</p>
-						<div class="rating">⭐ 4.5 <small class="muted">· Середньо</small></div>
-					</div>
-				</article>
+                <article class="recipe-card card">
+                    <img src="https://images.unsplash.com/photo-1514512364185-0a1f15d2d7ee?auto=format&fit=crop&w=800&q=60" alt="Тофу з овочами">
+                    <div class="meta">
+                        <strong>Тофу з томатно-чесничним соусом</strong>
+                        <div class="muted">Вегетаріанська · 22 хв</div>
+                    </div>
+                    <div class="info">
+                        <span class="small">Легко</span>
+                        <button class="like" aria-label="Вподобати">❤ <span style="opacity:0.8;margin-left:6px">63</span></button>
+                    </div>
+                </article>
+            </div>
 
-				<article class="card" data-popularity="65" data-difficulty="3">
-					<img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=1200&q=70" alt="Домашня піца">
-					<div class="meta">
-						<h3>Домашня піца: 5 секретів ідеальної корки</h3>
-						<p>Розкриваємо прийоми і час випікання для хрусткої основи.</p>
-						<div class="rating">⭐ 4.6 <small class="muted">· Важко</small></div>
-					</div>
-				</article>
-			</div>
-		</section>
+            <div style="height:18px"></div>
 
-		<section class="container" id="categories">
-			<div class="section-title">
-				<h2>Категорії</h2>
-				<a class="muted" href="#">Переглянути всі категорії →</a>
-			</div>
-			<div class="categories">
-				<div class="cat" role="button" tabindex="0" aria-pressed="false">
-					<div class="icon">🥐</div>
-					<strong>Сніданки</strong>
-					<div class="muted">Легко і швидко</div>
-				</div>
-				<div class="cat" role="button" tabindex="0">
-					<div class="icon">🍽️</div>
-					<strong>Обіди</strong>
-					<div class="muted">Для сімейного столу</div>
-				</div>
-				<div class="cat" role="button" tabindex="0">
-					<div class="icon">🍰</div>
-					<strong>Десерти</strong>
-					<div class="muted">Солодке задоволення</div>
-				</div>
-				<div class="cat" role="button" tabindex="0">
-					<div class="icon">🥦</div>
-					<strong>Вегетаріанські</strong>
-					<div class="muted">Збалансовано та смачно</div>
-				</div>
-			</div>
-		</section>
+            <div class="section-title">
+                <h3>Паста</h3>
+                <div class="small">Класика та нові інтерпретації</div>
+            </div>
+            <div class="cards-row">
+                <article class="recipe-card card">
+                    <img src="https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?auto=format&fit=crop&w=800&q=60" alt="Паста карбонара">
+                    <div class="meta">
+                        <strong>Карбонара з кремовим соусом</strong>
+                        <div class="muted">Паста · 20 хв</div>
+                    </div>
+                    <div class="info">
+                        <span class="small">Середньо</span>
+                        <button class="like" aria-label="Вподобати">❤ <span style="opacity:0.8;margin-left:6px">342</span></button>
+                    </div>
+                </article>
 
-		<section class="container" id="blog">
-			<div class="section-title">
-				<h2>Поради та блог</h2>
-				<a class="muted" href="#">Всі статті →</a>
-			</div>
+                <article class="recipe-card card">
+                    <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=800&q=60" alt="Лазанья">
+                    <div class="meta">
+                        <strong>Домашня лазанья</strong>
+                        <div class="muted">Паста · 60 хв</div>
+                    </div>
+                    <div class="info">
+                        <span class="small">Важко</span>
+                        <button class="like" aria-label="Вподобати">❤ <span style="opacity:0.8;margin-left:6px">201</span></button>
+                    </div>
+                </article>
 
-			<div class="blog-grid">
-				<article class="card">
-					<img src="https://images.unsplash.com/photo-1506368249639-73a05d6f6488?auto=format&fit=crop&w=1200&q=70" alt="Як правильно варити пасту">
-					<div class="meta">
-						<h3>Як правильно варити пасту</h3>
-						<p>Кілька простих трюків для ідеальної текстури.</p>
-					</div>
-				</article>
+                <article class="recipe-card card">
+                    <img src="https://images.unsplash.com/photo-1512058564366-c9e3b5c7e8f6?auto=format&fit=crop&w=800&q=60" alt="Паста з рікоттою">
+                    <div class="meta">
+                        <strong>Паста з рікоттою та цитрусами</strong>
+                        <div class="muted">Паста · 28 хв</div>
+                    </div>
+                    <div class="info">
+                        <span class="small">Середньо</span>
+                        <button class="like" aria-label="Вподобати">❤ <span style="opacity:0.8;margin-left:6px">158</span></button>
+                    </div>
+                </article>
 
-				<article class="card">
-					<img src="https://images.unsplash.com/photo-1546549039-9f6b5b6b5d2d?auto=format&fit=crop&w=1200&q=70" alt="Секрети ідеальної піци">
-					<div class="meta">
-						<h3>5 секретів ідеальної піци</h3>
-						<p>Тісто, температура та час — все це має значення.</p>
-					</div>
-				</article>
+                <article class="recipe-card card">
+                    <img src="https://images.unsplash.com/photo-1526318472351-c75fcf070d04?auto=format&fit=crop&w=800&q=60" alt="Спагеті з морепродуктами">
+                    <div class="meta">
+                        <strong>Спагеті з мідіями</strong>
+                        <div class="muted">Паста · 35 хв</div>
+                    </div>
+                    <div class="info">
+                        <span class="small">Середньо</span>
+                        <button class="like" aria-label="Вподобати">❤ <span style="opacity:0.8;margin-left:6px">189</span></button>
+                    </div>
+                </article>
+            </div>
 
-				<article class="card">
-					<img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=1200&q=70" alt="Як зберігати свіжі трави">
-					<div class="meta">
-						<h3>Як зберігати свіжі трави</h3>
-						<p>Прості поради, щоб зелень залишалася свіжою тижнями.</p>
-					</div>
-				</article>
-			</div>
-		</section>
+            <div style="height:18px"></div>
 
-		<section class="container" id="contacts" style="margin-top:30px">
-			<div class="section-title">
-				<h2>Підписка</h2>
-				<div class="muted">Отримуй нові рецепти щотижня</div>
-			</div>
-			<form id="subscribeForm" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-				<label for="email" class="sr-only">Email</label>
-				<input id="email" type="email" placeholder="Ваша електронна пошта" required style="padding:10px;border-radius:10px;border:1px solid #e6eef3;flex:1;min-width:200px">
-				<button class="btn" type="submit">Підписатись</button>
-				<div id="subscribeMsg" class="muted" aria-live="polite"></div>
-			</form>
-		</section>
+            <div class="section-title">
+                <h3>Десерти</h3>
+                <div class="small">Солодкі завершення</div>
+            </div>
+            <div class="cards-row">
+                <article class="recipe-card card">
+                    <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=800&q=60" alt="Ягідний десерт">
+                    <div class="meta">
+                        <strong>Ягідний чізкеєк без випікання</strong>
+                        <div class="muted">Десерт · 40 хв</div>
+                    </div>
+                    <div class="info">
+                        <span class="small">Середньо</span>
+                        <button class="like" aria-label="Вподобати">❤ <span style="opacity:0.8;margin-left:6px">277</span></button>
+                    </div>
+                </article>
 
-	</main>
+                <article class="recipe-card card">
+                    <img src="https://images.unsplash.com/photo-1505250469679-203ad9ced0cb?auto=format&fit=crop&w=800&q=60" alt="Шоколадний торт">
+                    <div class="meta">
+                        <strong>Інтенсивний шоколадний фондан</strong>
+                        <div class="muted">Десерт · 30 хв</div>
+                    </div>
+                    <div class="info">
+                        <span class="small">Середньо</span>
+                        <button class="like" aria-label="Вподобати">❤ <span style="opacity:0.8;margin-left:6px">321</span></button>
+                    </div>
+                </article>
 
-	<footer>
-		<div class="footer-inner">
-			<div>
-				<strong>CookEasy</strong>
-				<div class="muted">Надихайся та готуй з любов'ю.</div>
-			</div>
-			<div style="display:flex;gap:14px;align-items:center">
-				<a href="#" aria-label="Instagram">🔗 Instagram</a>
-				<a href="#" aria-label="Facebook">🔗 Facebook</a>
-				<a href="#" aria-label="YouTube">🔗 YouTube</a>
-			</div>
-			<div style="text-align:right">
-				<div class="muted">© <span id="year"></span> CookEasy. Усі права збережено.</div>
-			</div>
-		</div>
-	</footer>
+                <article class="recipe-card card">
+                    <img src="https://images.unsplash.com/photo-1541599540903-216a46ca2a2d?auto=format&fit=crop&w=800&q=60" alt="Панна котта">
+                    <div class="meta">
+                        <strong>Панна котта з малиновим соусом</strong>
+                        <div class="muted">Десерт · 20 хв</div>
+                    </div>
+                    <div class="info">
+                        <span class="small">Легко</span>
+                        <button class="like" aria-label="Вподобати">❤ <span style="opacity:0.8;margin-left:6px">143</span></button>
+                    </div>
+                </article>
 
-		<script src="js/main.js" defer></script>
+                <article class="recipe-card card">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=60" alt="Круасани">
+                    <div class="meta">
+                        <strong>Круасани з вершковим кремом</strong>
+                        <div class="muted">Десерт · 50 хв</div>
+                    </div>
+                    <div class="info">
+                        <span class="small">Важко</span>
+                        <button class="like" aria-label="Вподобати">❤ <span style="opacity:0.8;margin-left:6px">98</span></button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Категорії та сезони -->
+        <section style="margin-top:32px">
+            <div class="section-title">
+                <h3>Категорії та сезони</h3>
+                <div class="small">Швидко переходьте до потрібної добірки</div>
+            </div>
+
+            <div class="categories-grid">
+                <div class="cat-card card" role="button" tabindex="0" aria-pressed="false">
+                    <div class="icon">🥦</div>
+                    <strong>Вегетаріанські страви</strong>
+                    <div class="small">Легкі рецепти без м'яса</div>
+                </div>
+
+                <div class="cat-card card" role="button" tabindex="0">
+                    <div class="icon">🍰</div>
+                    <strong>Десерти</strong>
+                    <div class="small">Солодкі ідеї та випічка</div>
+                </div>
+
+                <div class="cat-card card" role="button" tabindex="0">
+                    <div class="icon">🍂</div>
+                    <strong>Осінні страви</strong>
+                    <div class="small">Супи, запіканки та пироги</div>
+                </div>
+
+                <div class="cat-card card" role="button" tabindex="0">
+                    <div class="icon">🦞</div>
+                    <strong>Морепродукти</strong>
+                    <div class="small">Риба, молюски та креветки</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Підписка / контакти -->
+        <section id="contacts" style="margin-top:40px">
+            <div class="section-title">
+                <h3>Підписка</h3>
+                <div class="small">Отримуйте рецепти на пошту</div>
+            </div>
+            <form id="subscribeForm" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+                <label for="email" class="small" style="display:block;width:100%">Email</label>
+                <input id="email" type="email" placeholder="Ваша електронна пошта" required style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);flex:1;min-width:200px;background:transparent;color:#fff">
+                <button class="btn-primary" type="submit">Підписатись</button>
+                <div id="subscribeMsg" class="muted small" aria-live="polite" style="width:100%"></div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div>
+                <strong>CookEasy</strong>
+                <div class="muted">Надихайся та готуй з любов'ю.</div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:center">
+                <a href="#" aria-label="Instagram" style="color:var(--muted);text-decoration:none">🔗 Instagram</a>
+                <a href="#" aria-label="Facebook" style="color:var(--muted);text-decoration:none">🔗 Facebook</a>
+                <a href="#" aria-label="YouTube" style="color:var(--muted);text-decoration:none">🔗 YouTube</a>
+            </div>
+            <div style="text-align:right">
+                <div class="muted">© <span id="year"></span> CookEasy. Усі права збережено.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // невелика логіка: підстановка року, підписка, like кнопки
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        document.getElementById('subscribeForm')?.addEventListener('submit', function(e){
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const msg = document.getElementById('subscribeMsg');
+            msg.textContent = 'Дякуємо! Підписка підтверджена для ' + (email || 'вказаної пошти') + '.';
+            this.reset();
+        });
+
+        document.querySelectorAll('.like').forEach(btn=>{
+            btn.addEventListener('click', ()=>{
+                btn.style.background = 'linear-gradient(90deg, rgba(255,122,45,0.12), rgba(255,157,92,0.06))';
+                btn.style.color = '#fff';
+            });
+        });
+    </script>
+
+    <script src="js/main.js" defer></script>
 
 </body>
 </html>
