@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Про нас - Смачно :)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <div class="logo-icon">👨‍🍳</div>
+            <span>Смачно :)</span>
+        </div>
+        
+        <nav>
+            <a href="#">Мій акаунт</a>
+            <a href="#">Головна</a>
+            <a href="#">Рецепти</a>
+            <a href="#" class="active">Про нас</a>
+            <a href="#">Контакти</a>
+        </nav>
+        
+        <a href="#" class="login-btn">Увійти</a>
+    </header>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="search-container">
+            <input type="text" placeholder="Шукати рецепти, інгредієнти..." class="search-input">
+            <button class="search-btn">🔍</button>
+            <button class="filter-btn">☰</button>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Про нас</h1>
+            <p class="subtitle">Зробити здорове харчування доступним і простим для кожного</p>
+            
+            <div class="heart-icon">❤️❤️</div>
+        </section>
+
+        <!-- Mission Section -->
+        <section class="mission">
+            <h2>Наша місія</h2>
+            <p>Ми створили "Смачно :)", щоб надихнути людей готувати вдома смачну та здорову їжу. Наша мета - зробити кулінарію доступною для всіх, незалежно від рівня майстерності.</p>
+        </section>
+
+        <!-- Values Section -->
+        <section class="values">
+            <h2>Наші цінності</h2>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">📚</div>
+                    <h3>Глибина рецептів</h3>
+                    <p>Детальні інструкції з фото</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">📱</div>
+                    <h3>Зручність</h3>
+                    <p>Доступ в будь-який простір у будь-який час</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">⭐</div>
+                    <h3>Персоналізація</h3>
+                    <p>Рекомендації на основі ваших уподобань</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
