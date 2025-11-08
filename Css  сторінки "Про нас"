@@ -1,0 +1,276 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(180deg, #1a2332 0%, #0d1520 100%);
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: rgba(26, 35, 50, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+nav {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+nav a {
+    color: #a0aec0;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+nav a.active {
+    color: #ff7a3d;
+}
+
+.login-btn {
+    background: #ff7a3d;
+    color: white;
+    padding: 10px 28px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.login-btn:hover {
+    background: #ff8c52;
+    transform: translateY(-2px);
+}
+
+/* Search Section */
+.search-section {
+    padding: 30px 60px;
+}
+
+.search-container {
+    position: relative;
+    max-width: 600px;
+    display: flex;
+    gap: 10px;
+}
+
+.search-input {
+    flex: 1;
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 14px 20px;
+    padding-right: 50px;
+    color: #ffffff;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-input::placeholder {
+    color: #64748b;
+}
+
+.search-input:focus {
+    border-color: rgba(255, 122, 61, 0.5);
+}
+
+.search-btn {
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #64748b;
+    transition: color 0.3s;
+}
+
+.search-btn:hover {
+    color: #ff7a3d;
+}
+
+.filter-btn {
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-size: 20px;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-btn:hover {
+    color: #ff7a3d;
+    border-color: rgba(255, 122, 61, 0.3);
+}
+
+/* Main Content */
+main {
+    padding: 40px 60px;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.subtitle {
+    color: #a0aec0;
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.heart-icon {
+    font-size: 60px;
+    margin: 30px 0;
+    /* Сюди вставити SVG або іконку серця */
+}
+
+/* Mission Section */
+.mission {
+    text-align: center;
+    max-width: 800px;
+    margin: 60px auto;
+}
+
+.mission h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.mission p {
+    color: #a0aec0;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* Values Section */
+.values {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.values h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.value-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 40px 30px;
+    transition: all 0.3s;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 122, 61, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.value-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.value-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.value-card p {
+    color: #a0aec0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .values-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    header, .search-section, main {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+    }
+    
+    nav {
+        gap: 20px;
+    }
+}
