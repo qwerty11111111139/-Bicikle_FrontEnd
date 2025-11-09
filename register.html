@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація - Смачно :)</title>
+    <link rel="stylesheet" href="style-register.css">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-box">
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-icon">👨‍🍳</div>
+                <span class="logo-text">Смачно :)</span>
+            </div>
+
+            <!-- Title -->
+            <h1>Реєстрація</h1>
+
+            <!-- Register Form -->
+            <form class="register-form">
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="name">Ім'я</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        placeholder="Ваше ім'я"
+                        required
+                    >
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="your@email.com"
+                        required
+                    >
+                </div>
+
+                <!-- Password Field -->
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="********"
+                        required
+                    >
+                </div>
+
+                <!-- Remember Me Checkbox -->
+                <div class="form-checkbox">
+                    <input 
+                        type="checkbox" 
+                        id="remember" 
+                        name="remember"
+                    >
+                    <label for="remember">Запам'ятати мене</label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="register-btn">Зареєструватись</button>
+
+                <!-- Login Link -->
+                <div class="login-link">
+                    <span>Вже є аккаунт?</span>
+                    <a href="#">Авторизуватись</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
